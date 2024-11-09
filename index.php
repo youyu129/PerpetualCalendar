@@ -15,9 +15,19 @@
       background-position: center;
     }
 
+    .title {
+      width: 600px;
+      margin: auto;
+    }
+
     h1,
     h2 {
       text-align: center;
+      color: rgb(104, 22, 22);
+    }
+
+    h3 {
+      text-align: right;
       color: rgb(104, 22, 22);
     }
 
@@ -59,8 +69,11 @@
 
     /* 導覽區塊樣式 */
     .nav {
+      width: 700px;
       text-align: center;
-      margin: 20px 0;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
     }
 
     /* 導覽按鈕樣式 */
@@ -84,7 +97,7 @@
     /* 導覽按鈕懸停樣式 */
     .nav-button:hover {
       background-color: rgba(233, 225, 233, 0.7);
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     /* 導覽按鈕點擊縮小效果 */
@@ -127,32 +140,45 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    /* 中央英文月份樣式 */
-    span {
+    /* 中央當前年月樣式 */
+    .current {
       color: rgb(104, 22, 22);
-      font-size: 36px;
-      text-shadow: 1px 1px 4px rgba(52, 4, 4, 0.7);
+      font-size: 28px;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(52, 4, 4, 0.7);
+      display: inline;
+    }
+
+    .left,
+    .right {
+      display: flex;
+      gap: 10px;
+      /* 元素之間間隔 10px */
     }
   </style>
 </head>
 
 <body>
-  <h1>Calendar</h1>
-  <?php
+  <div class="title">
+    <h1>Calendar</h1>
+    <?php
 /*請在這裹撰寫你的萬年曆程式碼*/
 
 // 設定時區為台灣
 date_default_timezone_set("Asia/Taipei");
 ?>
-  <!-- 顯示當前日期時間 -->
-  <h2><?=date("Y-m-d H:i:s");?></h2>
-
+    <!-- 顯示當前日期時間 -->
+    <h3><?=date("Y-m-d H:i:s");?></h3>
+  </div>
   <?php
 
 // 當前的年、月、日
 $year = date("Y");
 $month = date("m");
 $day = date("d");
+
+$todayYear = date("Y");
+$todayMonth = date("m");
 
 // 定義去年、明年、上月、下月
 $lastYear = $year - 1 ;
@@ -207,22 +233,31 @@ $firstDatTime = strtotime($firstDay);
 // 設定星期w = 0（星期天）到 6（星期六）
 $firstDayWeek = date("w",$firstDatTime);
 ?>
+  <!-- 月曆顯示的月份 -->
+  <div>
 
+  </div>
   <!-- 導覽按鈕 -->
   <div class='nav'>
-    <a class="nav-button" href="index.php?year=<?=$lastYear;?>&month=12">Last Year</a>
-    <a class="nav-button" href="index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">Last Month</a>
-    <span>
-      <?=date("F",strtotime("$year-$month"));?>
-    </span>
-    <a class="nav-button" href="index.php?year=<?=$nextYearForNextMonth;?>&month=<?=$nextMonth;?>">Next Month</a>
-    <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=1">Next Year</a>
+    <div class="left">
+      <a class="nav-button" href="index.php?year=<?=$lastYear;?>&month=12">Last Year</a>
+      <a class="nav-button" href="index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">Last Month</a>
+    </div>
+    <!-- 月曆當前顯示的年月 -->
+    <div class="current">
+      <?=date("Y-F",strtotime("$year-$month"));?>
+    </div>
+    <div class="right">
+      <a class="nav-button" href="index.php?year=<?=$nextYearForNextMonth;?>&month=<?=$nextMonth;?>">Next Month</a>
+      <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=1">Next Year</a>
+    </div>
+
   </div>
 
   <!-- 月曆表格 -->
   <div class="table-box">
     <table>
-      <tr style="border-bottom: 2px solid rgb(104, 22, 22); padding-bottom: 3px;">
+      <tr style="height: 55px;px;border-bottom: 2px solid rgb(104, 22, 22); padding-bottom: 3px;">
         <td class="weekend">Sun</td>
         <td>Mon</td>
         <td>Tue</td>
@@ -262,7 +297,7 @@ $firstDayWeek = date("w",$firstDatTime);
     </table>
   </div>
 
-  <a class="fixed-button" href="index.php?year=<?=$year;?>&month=<?=$month;?>">Today</a>
+  <a class="fixed-button" href="index.php?year=<?=$todayYear;?>&month=<?=$todayMonth;?>">Today</a>
 
   <div class="sentences">
     <?php
