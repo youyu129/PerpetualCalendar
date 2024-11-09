@@ -32,16 +32,16 @@
     }
 
     table {
-      width: 600px;
+      width: 560px;
       height: 60vh;
       border-collapse: collapse;
     }
 
     .table-box {
-      width: 600px;
+      width: 560px;
       padding: 20px;
       margin: 10px auto 10px;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.45);
       border-radius: 20px;
     }
 
@@ -50,7 +50,9 @@
       font-size: 1.2em;
       text-align: center;
     }
-
+    td {
+      width: 80px;
+    }
     /* 週末樣式 */
     .weekend {
       color: rgb(221, 5, 5);
@@ -58,7 +60,7 @@
 
     /* 今日樣式 */
     .today {
-      background-color: rgba(209, 157, 92, 0.5);
+      background-color: rgba(209, 157, 92, 0.45);
       border-radius: 50%;
     }
 
@@ -69,7 +71,7 @@
 
     /* 導覽區塊樣式 */
     .nav {
-      width: 700px;
+      width: 680px;
       text-align: center;
       margin: auto;
       display: flex;
