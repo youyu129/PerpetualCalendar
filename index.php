@@ -14,16 +14,24 @@
       background-size: cover;
       background-position: center;
     }
+
     /* 用偽元素調淡背景 */
     body::after {
-      content: ""; 
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(255, 255, 255, 0.1); /* 半透明白色覆蓋層，調整透明度 */
-      z-index: -1; /* 保證覆蓋層在背景下 */
+      background-color: rgba(255, 255, 255, 0.1);
+      /* 半透明白色覆蓋層，調整透明度 */
+      z-index: -1;
+      /* 保證覆蓋層在背景下 */
+    }
+
+    .title {
+      width: 680px;
+      margin: auto;
     }
 
     h1,
@@ -56,9 +64,13 @@
       font-size: 1.2em;
       text-align: center;
     }
+
     td {
       width: 80px;
+      padding: 5px;
+      vertical-align: middle;
     }
+
     /* 週末樣式 */
     .weekend {
       color: rgb(221, 5, 5);
@@ -75,6 +87,11 @@
       color: gray;
     }
 
+    /* 國定假日樣式 */
+    .holiday {
+      color: red;
+    }
+
     /* 導覽區塊樣式 */
     .nav {
       width: 680px;
@@ -82,6 +99,14 @@
       margin: auto;
       display: flex;
       justify-content: space-between;
+    }
+
+    /* nav按鈕靠左靠右 */
+    .left,
+    .right {
+      display: flex;
+      gap: 10px;
+      /* 元素之間間隔 10px */
     }
 
     /* 導覽按鈕樣式 */
@@ -111,6 +136,17 @@
     /* 導覽按鈕點擊縮小效果 */
     .nav-button:active {
       transform: scale(0.95);
+    }
+
+    .festival {
+      color: rgb(231, 14, 14);
+      /* 節日名稱顯示為紅色 */
+      font-size: 14px;
+      /* 節日名稱文字較小 */
+      display: block;
+      /* 讓節日名稱在日期下方顯示 */
+      margin-top: 5px;
+      /* 添加間距，使節日名稱與日期不會太擠 */
     }
 
     /* 佳句樣式 */
@@ -156,20 +192,13 @@
       text-shadow: 1px 1px 2px rgba(52, 4, 4, 0.7);
       display: inline;
     }
-    /* nav按鈕靠左靠右 */
-    .left,
-    .right {
-      display: flex;
-      gap: 10px;
-      /* 元素之間間隔 10px */
-    }
   </style>
 </head>
 
 <body>
-  <div>
-  <h3><?=date("Y-m-d H:i:s");?></h3>
+  <div class="title">
     <h1>Calendar</h1>
+    <h3><?=date("Y-m-d H:i:s");?></h3>
     <?php
 /*請在這裹撰寫你的萬年曆程式碼*/
 
@@ -294,9 +323,19 @@ $firstDayWeek = date("w",$firstDatTime);
       $w=date("w",$theDayTime);
       $weekend=($w==0 || $w==6)?'weekend':'';
 
+      // 國定假日樣式
+      $holidayKey = date("m-d", $theDayTime); 
+      $isHoliday = array_key_exists($holidayKey, $holidays) ? 'holiday' : '';
+
       // 顯示日期
-      echo "<td class='$theMonth $isToday $weekend'>";
+      echo "<td class='$theMonth $isToday $weekend $isHoliday'>";
       echo date("d",$theDayTime);
+
+      // 顯示國定假日
+      $holidayKey = date("m-d", $theDayTime);  // 取得 "mm-dd" 格式的日期
+      if (array_key_exists($holidayKey, $holidays)) {
+          echo "<br><span class='festival'>" . $holidays[$holidayKey] . "</span>";
+      }
       echo "</td>";
     }
     echo "</tr>";
