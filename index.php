@@ -14,10 +14,16 @@
       background-size: cover;
       background-position: center;
     }
-
-    .title {
-      width: 600px;
-      margin: auto;
+    /* 用偽元素調淡背景 */
+    body::after {
+      content: ""; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.1); /* 半透明白色覆蓋層，調整透明度 */
+      z-index: -1; /* 保證覆蓋層在背景下 */
     }
 
     h1,
@@ -27,7 +33,7 @@
     }
 
     h3 {
-      text-align: right;
+      text-align: left;
       color: rgb(104, 22, 22);
     }
 
@@ -121,7 +127,7 @@
     .fixed-button {
       position: fixed;
       right: 50px;
-      bottom: 50%;
+      top: 50px;
       padding: 10px 15px;
       background-color: #f6d1bd;
       color: rgb(139, 23, 23);
@@ -150,7 +156,7 @@
       text-shadow: 1px 1px 2px rgba(52, 4, 4, 0.7);
       display: inline;
     }
-
+    /* nav按鈕靠左靠右 */
     .left,
     .right {
       display: flex;
@@ -161,7 +167,8 @@
 </head>
 
 <body>
-  <div class="title">
+  <div>
+  <h3><?=date("Y-m-d H:i:s");?></h3>
     <h1>Calendar</h1>
     <?php
 /*請在這裹撰寫你的萬年曆程式碼*/
@@ -170,7 +177,6 @@
 date_default_timezone_set("Asia/Taipei");
 ?>
     <!-- 顯示當前日期時間 -->
-    <h3><?=date("Y-m-d H:i:s");?></h3>
   </div>
   <?php
 
@@ -242,7 +248,7 @@ $firstDayWeek = date("w",$firstDatTime);
   <!-- 導覽按鈕 -->
   <div class='nav'>
     <div class="left">
-      <a class="nav-button" href="index.php?year=<?=$lastYear;?>&month=12">Last Year</a>
+      <a class="nav-button" href="index.php?year=<?=$year-1;?>&month=<?=$month;?>">Last Year</a>
       <a class="nav-button" href="index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">Last Month</a>
     </div>
     <!-- 月曆當前顯示的年月 -->
@@ -250,8 +256,8 @@ $firstDayWeek = date("w",$firstDatTime);
       <?=date("Y-F",strtotime("$year-$month"));?>
     </div>
     <div class="right">
-      <a class="nav-button" href="index.php?year=<?=$nextYearForNextMonth;?>&month=<?=$nextMonth;?>">Next Month</a>
-      <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=1">Next Year</a>
+      <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">Next Month</a>
+      <a class="nav-button" href="index.php?year=<?=$year+1;?>&month=<?=$month;?>">Next Year</a>
     </div>
 
   </div>
