@@ -46,13 +46,13 @@
     }
 
     table {
-      width: 560px;
+      width: 595px;
       height: 60vh;
       border-collapse: collapse;
     }
 
     .table-box {
-      width: 560px;
+      width: 595px;
       padding: 20px;
       margin: 10px auto 10px;
       background-color: rgba(255, 255, 255, 0.45);
@@ -61,14 +61,29 @@
 
     tr,
     td {
+      color: rgb(83, 11, 11);
+      border: 2px solid rgb(212, 155, 155);
       font-size: 1.2em;
-      text-align: center;
+      text-align: right;
     }
 
     td {
-      width: 80px;
-      padding: 5px;
-      vertical-align: middle;
+      width: 85px;
+      height: 50px;
+      padding: 8px;
+      text-align: right;
+      /* 水平對齊到右邊 */
+      vertical-align: top;
+      /* 垂直對齊到上邊 */
+    }
+
+    .week {
+      color: rgb(83, 11, 11);
+      font-size: 24px;
+      height: 40px;
+      text-align: center;
+      padding-bottom: 3px;
+      border: 0;
     }
 
     /* 週末樣式 */
@@ -140,13 +155,16 @@
 
     .festival {
       color: rgb(231, 14, 14);
-      /* 節日名稱顯示為紅色 */
       font-size: 14px;
-      /* 節日名稱文字較小 */
-      display: block;
       /* 讓節日名稱在日期下方顯示 */
-      margin-top: 5px;
-      /* 添加間距，使節日名稱與日期不會太擠 */
+      position: relative;
+      /* 將定位方式設為絕對定位 */
+      bottom: 0px;
+      /* 與底部間隔 2px */
+      left: 0px;
+      /* 與左側間隔 2px */
+      display: block;
+      text-align: left;
     }
 
     /* 佳句樣式 */
@@ -294,14 +312,14 @@ $firstDayWeek = date("w",$firstDatTime);
   <!-- 月曆表格 -->
   <div class="table-box">
     <table>
-      <tr style="height: 55px;px;border-bottom: 2px solid rgb(104, 22, 22); padding-bottom: 3px;">
-        <td class="weekend">Sun</td>
-        <td>Mon</td>
-        <td>Tue</td>
-        <td>Wed</td>
-        <td>Thu</td>
-        <td>Fri</td>
-        <td class="weekend">Sat</td>
+      <tr class="week">
+        <td class="week weekend">Sun</td>
+        <td class="week">Mon</td>
+        <td class="week">Tue</td>
+        <td class="week">Wed</td>
+        <td class="week">Thu</td>
+        <td class="week">Fri</td>
+        <td class="week weekend">Sat</td>
       </tr>
       <?php
 
