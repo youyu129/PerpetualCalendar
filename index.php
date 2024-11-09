@@ -93,8 +93,7 @@
 
     /* 今日樣式 */
     .today {
-      background-color: rgba(209, 157, 92, 0.45);
-      border-radius: 50%;
+      background-color: rgba(248, 177, 97, 0.5);
     }
 
     /* 非當月樣式 */
