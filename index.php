@@ -2,229 +2,230 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="#">
-  <title>Calendar</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Calendar</title>
+    <style>
     /*請在這裹撰寫你的CSS*/
     body {
-      background-image: url('https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_1280.jpg');
-      background-size: cover;
-      background-position: center;
+        background-image: url('https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_1280.jpg');
+        background-size: cover;
+        background-position: center;
     }
 
     /* 用偽元素調淡背景 */
     body::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(255, 255, 255, 0.1);
-      /* 半透明白色覆蓋層，調整透明度 */
-      z-index: -1;
-      /* 保證覆蓋層在背景下 */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        /* 半透明白色覆蓋層，調整透明度 */
+        z-index: -1;
+        /* 保證覆蓋層在背景下 */
     }
 
     .title {
-      width: 680px;
-      margin: auto;
+        width: 680px;
+        margin: auto;
     }
 
     h1,
     h2 {
-      text-align: center;
-      color: rgb(104, 22, 22);
+        text-align: center;
+        color: rgb(104, 22, 22);
     }
 
     h3 {
-      text-align: left;
-      color: rgb(104, 22, 22);
+        text-align: left;
+        color: rgb(104, 22, 22);
     }
 
     table {
-      width: 595px;
-      height: 60vh;
-      border-collapse: collapse;
+        width: 595px;
+        height: 60vh;
+        border-collapse: collapse;
     }
 
     .table-box {
-      width: 595px;
-      padding: 20px;
-      margin: 10px auto 10px;
-      background-color: rgba(255, 255, 255, 0.45);
-      border-radius: 20px;
+        width: 595px;
+        padding: 20px;
+        margin: 10px auto 10px;
+        background-color: rgba(255, 255, 255, 0.45);
+        border-radius: 20px;
     }
 
     tr,
     td {
-      color: rgb(83, 11, 11);
-      border: 2px solid rgb(212, 155, 155);
-      font-size: 1.2em;
-      text-align: right;
+        color: rgb(83, 11, 11);
+        border: 2px solid rgb(212, 155, 155);
+        font-size: 1.2em;
+        text-align: right;
     }
 
     td {
-      width: 85px;
-      height: 50px;
-      padding: 8px;
-      text-align: right;
-      /* 水平對齊到右邊 */
-      vertical-align: top;
-      /* 垂直對齊到上邊 */
+        width: 85px;
+        height: 50px;
+        padding: 8px;
+        text-align: right;
+        /* 水平對齊到右邊 */
+        vertical-align: top;
+        /* 垂直對齊到上邊 */
     }
 
     .week {
-      color: rgb(83, 11, 11);
-      font-size: 24px;
-      height: 40px;
-      text-align: center;
-      padding-bottom: 3px;
-      border: 0;
+        color: rgb(83, 11, 11);
+        font-size: 24px;
+        height: 40px;
+        text-align: center;
+        padding-bottom: 3px;
+        border: 0;
     }
 
     /* 週末樣式 */
     .weekend {
-      color: rgb(221, 5, 5);
+        color: rgb(221, 5, 5);
     }
 
     /* 今日樣式 */
     .today {
-      background-color: rgba(248, 177, 97, 0.5);
+        background-color: rgba(248, 177, 97, 0.5);
     }
 
     /* 非當月樣式 */
     .gray-text {
-      color: gray;
+        color: gray;
     }
 
     /* 國定假日樣式 */
     .holiday {
-      color: red;
+        color: red;
     }
 
     /* 導覽區塊樣式 */
     .nav {
-      width: 680px;
-      text-align: center;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
+        width: 680px;
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
     }
 
     /* nav按鈕靠左靠右 */
     .left,
     .right {
-      display: flex;
-      gap: 10px;
-      /* 元素之間間隔 10px */
+        display: flex;
+        gap: 10px;
+        /* 元素之間間隔 10px */
     }
 
     /* 導覽按鈕樣式 */
     .nav-button {
-      font-weight: bold;
-      display: inline-block;
-      padding: 10px 15px;
-      margin: 5px;
-      background-color: rgba(230, 222, 230, 0.6);
-      color: rgb(139, 23, 23);
-      text-decoration: none;
-      /* 去掉下底線 */
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      transition: background-color 0.3s, transform 0.3s;
-      /* 動畫效果 */
-      cursor: pointer;
-      /*手型指標*/
+        font-weight: bold;
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: rgba(230, 222, 230, 0.6);
+        color: rgb(139, 23, 23);
+        text-decoration: none;
+        /* 去掉下底線 */
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s, transform 0.3s;
+        /* 動畫效果 */
+        cursor: pointer;
+        /*手型指標*/
     }
 
     /* 導覽按鈕懸停樣式 */
     .nav-button:hover {
-      background-color: rgba(233, 225, 233, 0.7);
-      transform: scale(1.1);
+        background-color: rgba(233, 225, 233, 0.7);
+        transform: scale(1.1);
     }
 
     /* 導覽按鈕點擊縮小效果 */
     .nav-button:active {
-      transform: scale(0.95);
+        transform: scale(0.95);
     }
 
     .festival {
-      color: rgb(231, 14, 14);
-      font-size: 14px;
-      /* 讓節日名稱在日期下方顯示 */
-      position: relative;
-      /* 將定位方式設為絕對定位 */
-      bottom: 0px;
-      /* 與底部間隔 2px */
-      left: 0px;
-      /* 與左側間隔 2px */
-      display: block;
-      text-align: left;
+        color: rgb(231, 14, 14);
+        font-size: 14px;
+        /* 讓節日名稱在日期下方顯示 */
+        position: relative;
+        /* 將定位方式設為絕對定位 */
+        bottom: 0px;
+        /* 與底部間隔 2px */
+        left: 0px;
+        /* 與左側間隔 2px */
+        display: block;
+        text-align: left;
     }
 
     /* 佳句樣式 */
     .sentences {
-      font-size: 24px;
-      text-align: center;
-      font-style: italic;
-      color: rgb(139, 23, 23);
-      margin: 0 auto;
-      font-family: Calibri, Tahoma, Verdana, Geneva, sans-serif;
+        font-size: 24px;
+        text-align: center;
+        font-style: italic;
+        color: rgb(139, 23, 23);
+        margin: 0 auto;
+        font-family: Calibri, Tahoma, Verdana, Geneva, sans-serif;
     }
 
     /* Today按鈕樣式 */
     .fixed-button {
-      position: fixed;
-      right: 50px;
-      top: 50px;
-      padding: 10px 15px;
-      background-color: #f6d1bd;
-      color: rgb(139, 23, 23);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      /* 陰影 */
-      transition: background-color 0.3s;
-      /* 漸變效果 */
-      text-decoration: none;
+        position: fixed;
+        right: 50px;
+        top: 50px;
+        padding: 10px 15px;
+        background-color: #f6d1bd;
+        color: rgb(139, 23, 23);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        /* 陰影 */
+        transition: background-color 0.3s;
+        /* 漸變效果 */
+        text-decoration: none;
     }
 
     /* Today按鈕hover */
     .fixed-button:hover {
-      background-color: #b86b3b;
-      /* 懸停效果 */
-      color: rgba(255, 255, 255, 0.5);
+        background-color: #b86b3b;
+        /* 懸停效果 */
+        color: rgba(255, 255, 255, 0.5);
     }
 
     /* 中央當前年月樣式 */
     .current {
-      color: rgb(104, 22, 22);
-      font-size: 28px;
-      text-align: center;
-      text-shadow: 1px 1px 2px rgba(52, 4, 4, 0.7);
-      display: inline;
+        color: rgb(104, 22, 22);
+        font-size: 28px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(52, 4, 4, 0.7);
+        display: inline;
     }
-  </style>
+    </style>
 </head>
 
 <body>
-  <div class="title">
-    <h1>Calendar</h1>
-    <h3><?=date("Y-m-d H:i:s");?></h3>
-    <?php
+    <div class="title">
+        <h1>Calendar</h1>
+        <h3><span><?=date("Y-m-d");?>&nbsp;&nbsp;</span><span id="time"></span></h3>
+        <?php
 /*請在這裹撰寫你的萬年曆程式碼*/
 
 // 設定時區為台灣
 date_default_timezone_set("Asia/Taipei");
 ?>
-    <!-- 顯示當前日期時間 -->
-  </div>
-  <?php
+        <!-- 顯示當前日期時間 -->
+    </div>
+    <?php
 
 // 當前的年、月、日
 $year = date("Y");
@@ -287,40 +288,40 @@ $firstDatTime = strtotime($firstDay);
 // 設定星期w = 0（星期天）到 6（星期六）
 $firstDayWeek = date("w",$firstDatTime);
 ?>
-  <!-- 月曆顯示的月份 -->
-  <div>
+    <!-- 月曆顯示的月份 -->
+    <div>
 
-  </div>
-  <!-- 導覽按鈕 -->
-  <div class='nav'>
-    <div class="left">
-      <a class="nav-button" href="index.php?year=<?=$year-1;?>&month=<?=$month;?>">Last Year</a>
-      <a class="nav-button" href="index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">Last Month</a>
     </div>
-    <!-- 月曆當前顯示的年月 -->
-    <div class="current">
-      <?=date("Y-F",strtotime("$year-$month"));?>
-    </div>
-    <div class="right">
-      <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">Next Month</a>
-      <a class="nav-button" href="index.php?year=<?=$year+1;?>&month=<?=$month;?>">Next Year</a>
+    <!-- 導覽按鈕 -->
+    <div class='nav'>
+        <div class="left">
+            <a class="nav-button" href="index.php?year=<?=$year-1;?>&month=<?=$month;?>">Last Year</a>
+            <a class="nav-button" href="index.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">Last Month</a>
+        </div>
+        <!-- 月曆當前顯示的年月 -->
+        <div class="current">
+            <?=date("Y-F",strtotime("$year-$month"));?>
+        </div>
+        <div class="right">
+            <a class="nav-button" href="index.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">Next Month</a>
+            <a class="nav-button" href="index.php?year=<?=$year+1;?>&month=<?=$month;?>">Next Year</a>
+        </div>
+
     </div>
 
-  </div>
-
-  <!-- 月曆表格 -->
-  <div class="table-box">
-    <table>
-      <tr class="week">
-        <td class="week weekend">Sun</td>
-        <td class="week">Mon</td>
-        <td class="week">Tue</td>
-        <td class="week">Wed</td>
-        <td class="week">Thu</td>
-        <td class="week">Fri</td>
-        <td class="week weekend">Sat</td>
-      </tr>
-      <?php
+    <!-- 月曆表格 -->
+    <div class="table-box">
+        <table>
+            <tr class="week">
+                <td class="week weekend">Sun</td>
+                <td class="week">Mon</td>
+                <td class="week">Tue</td>
+                <td class="week">Wed</td>
+                <td class="week">Thu</td>
+                <td class="week">Fri</td>
+                <td class="week weekend">Sat</td>
+            </tr>
+            <?php
 
   // 用for迴圈生成表格日期
   for ($i=0; $i <5 ; $i++) { 
@@ -358,13 +359,13 @@ $firstDayWeek = date("w",$firstDatTime);
     echo "</tr>";
   }
   ?>
-    </table>
-  </div>
+        </table>
+    </div>
 
-  <a class="fixed-button" href="index.php?year=<?=$todayYear;?>&month=<?=$todayMonth;?>">Today</a>
+    <a class="fixed-button" href="index.php?year=<?=$todayYear;?>&month=<?=$todayMonth;?>">Today</a>
 
-  <div class="sentences">
-    <?php
+    <div class="sentences">
+        <?php
     $sentences = [
       "Believe you can and you're halfway there.",
       "Success is not the key to happiness.",
@@ -457,7 +458,25 @@ $firstDayWeek = date("w",$firstDatTime);
   ];
   echo $sentences[rand(0, count($sentences) - 1)];
   ?>
-  </div>
+    </div>
+
+    <script>
+    function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById('time').textContent = timeString;
+    }
+
+    // 每秒更新一次時間
+    setInterval(updateTime, 1000);
+
+    // 初始化顯示時間
+    updateTime();
+    </script>
 </body>
 
 </html>
